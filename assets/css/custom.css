@@ -1,0 +1,74 @@
+/* here you can put your own css to customize and override the theme */
+span.error{color:#e73d4a;}
+.login .logo{
+    margin: 0px;
+}
+.page-header.navbar{
+    background-color: #337ab7;
+}
+.page-header.navbar .top-menu .navbar-nav > li.dropdown-user > .dropdown-toggle > .username{
+    color: #fff;
+}
+.page-header.navbar .top-menu .navbar-nav > li.dropdown.open .dropdown-toggle{
+    background-color: #337ab7 !important;
+}
+.page-header.navbar .top-menu .navbar-nav > li.dropdown .dropdown-toggle:hover{
+    background-color: #28669c !important;
+}
+.page-header.navbar .page-logo{
+    padding-right: 0px;
+}
+.page-header.navbar .menu-toggler.sidebar-toggler{
+    margin-top: 13px;
+}
+.page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu > li.active > a, .page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu > li.active.open > a, .page-sidebar .page-sidebar-menu > li.active > a, .page-sidebar .page-sidebar-menu > li.active.open > a{
+    background-color: #337ab7;
+}
+
+#row-brand, #row-kendaraan, #row-kategori, #row-kurir, #row-flavor, #row-level, #row-produk, #row-areaPenjualan, #row-sub-brand, #row-sub-kategori, #row-supplier, #row-target, #row-pengguna, #row-vendor, #row-areaGudang, #row-warmut, #row-hutang, #row-penyetoran-kasir, #row-pendapatan-agen, #row-other-income, #row-jurnal{
+    display: none;
+}
+
+.page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu > li.active > a:hover, .page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu > li.active.open > a:hover, .page-sidebar .page-sidebar-menu > li.active > a:hover, .page-sidebar .page-sidebar-menu > li.active.open > a:hover{
+    background-color: #28669c;
+}
+.page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu > li.active.open > a > .selected, .page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu > li.active > a > .selected, .page-sidebar .page-sidebar-menu > li.active.open > a > .selected, .page-sidebar .page-sidebar-menu > li.active > a > .selected{
+    border-left: 8px solid #337ab7 !important;
+}
+.page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu > li.active.open > a:hover > .selected, .page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu > li.active > a:hover > .selected, .page-sidebar .page-sidebar-menu > li.active.open > a:hover > .selected, .page-sidebar .page-sidebar-menu > li.active > a:hover > .selected{
+    border-left: 8px solid #28669c !important;
+}
+
+.img-logo{width: 140px;}
+.page-header.navbar .page-logo .logo-default{
+    margin-top: 2px !important;
+    position: relative;
+    right: 15px;
+}
+.form-horizontal .form-group.form-md-line-input>label {
+    padding-top: 5px;
+    font-size: 14px;
+    color: #000000 !important;
+}
+.form-group span.error{
+    margin-left: 27% !important;
+}
+/*.dropdown-option{
+    position:absolute !important; 
+    display: block; !important;
+}*/
+.table-scrollable{
+    width: 100%;
+    overflow-x: auto;
+    overflow-y: auto !important;
+    border: 1px solid #e7ecf1;
+    margin: 10px 0!important;
+}
+
+div.details-control {
+    background: url('../img/details_open.png') no-repeat center center; 
+    cursor: pointer;
+}
+tr.details .details-control {
+    background: url('../img/details_close.png') no-repeat center center;
+}

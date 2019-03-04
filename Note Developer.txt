@@ -1,0 +1,10 @@
+Akun Administrator
+Username : admin
+Password : password
+
+====================
+Untuk membuat module baru :
+1. Buka file composer.json
+2. Tambahkan path di bagian autoload => classmap
+3. Jalankan di terminal/command prompt : composer dump-autoload
+4. Cek vendor/composer/autoload_classmap.php apakah model yang didaftarkan sudah terdaftar atau belum.
