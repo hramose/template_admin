@@ -1,387 +1,428 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="utf-8" />
-        <title>@section('title') @show</title>
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta content="width=device-width, initial-scale=1" name="viewport" />
-        <meta content="" name="description" />
-        <meta content="" name="author" />
 
-        <link href="http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700&subset=all" rel="stylesheet" type="text/css" />
-        <link href="{{ base_url() }}assets/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
-        <link href="{{ base_url() }}assets/plugins/simple-line-icons/simple-line-icons.min.css" rel="stylesheet" type="text/css" />
-        <link href="{{ base_url() }}assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
-        <link href="{{ base_url() }}assets/plugins/uniform/css/uniform.default.css" rel="stylesheet" type="text/css" />
-        <link href="{{ base_url() }}assets/plugins/bootstrap-switch/css/bootstrap-switch.min.css" rel="stylesheet" type="text/css" />
+<head>
+    <title>@section('title') @show</title>
+    <!-- HTML5 Shim and Respond.js IE10 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 10]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <!-- Meta -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="{{ lang('system_description') }}">
+    <meta name="keywords" content="{{ lang('system_keywords') }}">
+    <meta name="author" content="{{ lang('system_author') }}">
+    <!-- Favicon Icon -->
+    <link rel="icon" href="{{ base_url() }}assets/global/assets/images/favicon.ico" type="image/x-icon">
+    <!-- Google Font-->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600" rel="stylesheet">
+    <!-- Required Framework -->
+    <link rel="stylesheet" type="text/css" href="{{ base_url() }}assets/global/bower_components/bootstrap/css/bootstrap.min.css">
+    <!-- Themify-icons Line Icon -->
+    <link rel="stylesheet" type="text/css" href="{{ base_url() }}assets/global/assets/icon/themify-icons/themify-icons.css">
+    <!-- Ico Font -->
+    <link rel="stylesheet" type="text/css" href="{{ base_url() }}assets/global/assets/icon/icofont/css/icofont.css">
+    <!-- Feather Awesome -->
+    <link rel="stylesheet" type="text/css" href="{{ base_url() }}assets/global/assets/icon/feather/css/feather.css">
+    <!-- Style.css -->
+    <link rel="stylesheet" type="text/css" href="{{ base_url() }}assets/global/assets/css/style.css">
+    <link rel="stylesheet" type="text/css" href="{{ base_url() }}assets/global/assets/css/jquery.mCustomScrollbar.css">
+    <!-- Data Table -->
+    <link href="{{ base_url() }}assets/plugins/datatables/datatables.min.css" rel="stylesheet" type="text/css" />
+    <link href="{{ base_url() }}assets/plugins/datatables/plugins/bootstrap/datatables.bootstrap.css" rel="stylesheet" type="text/css" />
+    <!-- Bootstrap Switch -->
+    <link rel="stylesheet" type="text/css" href="{{ base_url() }}assets/global/bower_components/bootstrap-switch/css/bootstrap-switch.min.css">
+    <!-- Select2 -->
+    <link rel="stylesheet" type="text/css" href="{{ base_url() }}assets/global/bower_components/select2/css/select2.min.css">
+    <!-- Bootstrap Toastr -->
+    <link rel="stylesheet" type="text/css" href="{{ base_url() }}assets/global/bower_components/bootstrap-toastr/toastr.css">
+</head>
 
-        <link href="{{ base_url() }}assets/plugins/datatables/datatables.min.css" rel="stylesheet" type="text/css" />
-        <link href="{{ base_url() }}assets/plugins/datatables/plugins/bootstrap/datatables.bootstrap.css" rel="stylesheet" type="text/css" />
-        <link href="{{ base_url() }}assets/plugins/bootstrap-toastr/toastr.css" rel="stylesheet" type="text/css" />
-        <link href="{{ base_url() }}assets/plugins/confirm/css/jquery-confirm.css" rel="stylesheet" type="text/css" />
-        <link href="{{ base_url() }}assets/plugins/select2/css/select2.css" rel="stylesheet" type="text/css" />
-        <link href="{{ base_url() }}assets/plugins/select2/css/select2-bootstrap.css" rel="stylesheet" type="text/css" />
-        <link href="{{ base_url() }}assets/plugins/bootstrap-datepicker/css/bootstrap-datepicker3.min.css" rel="stylesheet" type="text/css" />
-        <link href="{{ base_url() }}assets/plugins/bootstrap-datetimepicker/css/bootstrap-datetimepicker.min.css" rel="stylesheet" type="text/css" />
-        <link href="{{ base_url() }}assets/plugins/easy-autocomplete/easy-autocomplete.min.css" rel="stylesheet" type="text/css" />
-        <link href="{{ base_url() }}assets/plugins/bootstrap-select/css/bootstrap-select.css" rel="stylesheet" type="text/css" />
-        <link href="{{ base_url() }}assets/plugins/tipso/src/tipso.min.css" rel="stylesheet" type="text/css" />
-        <link href="{{ base_url() }}assets/css/components-md.min.css" rel="stylesheet" id="style_components" type="text/css" />
-        <link href="{{ base_url() }}assets/css/plugins-md.min.css" rel="stylesheet" type="text/css" />
-
-
-        <link href="{{ base_url() }}assets/css/layout.min.css" rel="stylesheet" type="text/css" />
-        <link href="{{ base_url() }}assets/css/themes/light.css" rel="stylesheet" type="text/css" id="style_color" />
-        <link href="{{ base_url() }}assets/css/custom.css" rel="stylesheet" type="text/css" />
-
-        <link rel="icon" href="{{ base_url() }}assets/img/favicon.ico" />
-    </head>
-
-    <body class="page-header-fixed page-sidebar-closed-hide-logo page-content-white page-md">
-        <!-- BEGIN HEADER -->
-        <div class="page-header navbar navbar-fixed-top">
-            <!-- BEGIN HEADER INNER -->
-            <div class="page-header-inner ">
-                <!-- BEGIN LOGO -->
-                <div class="page-logo">
-                    <a href="index.html">
-                        <img src="{{ base_url() }}assets/img/logo-nav.png" alt="logo" class="logo-default" /> </a>
-                    <!-- <h4 class="logo-default font-white pull-left">TIK Systems</h4> -->
-                    <div class="menu-toggler sidebar-toggler" onclick="toggle()"></div>
-                </div>
-                <!-- END LOGO -->
-                <!-- BEGIN RESPONSIVE MENU TOGGLER -->
-                <a href="javascript:;" class="menu-toggler responsive-toggler" data-toggle="collapse" data-target=".navbar-collapse"> </a>
-                <!-- END RESPONSIVE MENU TOGGLER -->
-                <!-- BEGIN TOP NAVIGATION MENU -->
-                <div class="top-menu">
-                    <ul class="nav navbar-nav pull-left" style="position: fixed; left: 249px;top: 15px; font-weight: bold;color: #FFF;" id="datetime_navbar">
-                        <input type="hidden" id="date_param" value="0">
-                        <?php 
-                        //Array Hari
-                        $array_hari = array(1=>'Senin','Selasa','Rabu','Kamis','Jumat', 'Sabtu','Minggu');
-                        $hari = $array_hari[date('N')];
-                        echo $hari.', ';
-                        echo date('d F Y').'  ';?><span id="clock"><?php print date('H:i:s'); ?>
-                    </ul>
-                    <ul class="nav navbar-nav pull-right">
-                    <!-- 
-                        <li class="dropdown dropdown-extended dropdown-notification" id="header_notification_bar">
-                            <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true" aria-expanded="true">
-                                <i class="icon-bell"></i>
-                                <span class="badge badge-default"> 7 </span>
-                            </a>
-                            <ul class="dropdown-menu">
-                                <li class="external">
-                                    <h3>
-                                        <span class="bold">12 pending</span> notifications</h3>
-                                    <a href="">view all</a>
-                                </li>
-                                <li>
-                                    <div class="slimScrollDiv" style="position: relative; overflow: auto; width: auto; height: 250px;"><ul class="dropdown-menu-list scroller" style="height: 250px; overflow: auto; width: auto;" data-handle-color="#637283" data-initialized="1">
-                                        <li>
-                                            <a href="javascript:;">
-                                                <span class="time">just now</span>
-                                                <span class="details">
-                                                    <span class="label label-sm label-icon label-success">
-                                                        <i class="fa fa-plus"></i>
-                                                    </span> New user registered. </span>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="javascript:;">
-                                                <span class="time">3 mins</span>
-                                                <span class="details">
-                                                    <span class="label label-sm label-icon label-danger">
-                                                        <i class="fa fa-bolt"></i>
-                                                    </span> Server #12 overloaded. </span>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="javascript:;">
-                                                <span class="time">10 mins</span>
-                                                <span class="details">
-                                                    <span class="label label-sm label-icon label-warning">
-                                                        <i class="fa fa-bell-o"></i>
-                                                    </span> Server #2 not responding. </span>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="javascript:;">
-                                                <span class="time">14 hrs</span>
-                                                <span class="details">
-                                                    <span class="label label-sm label-icon label-info">
-                                                        <i class="fa fa-bullhorn"></i>
-                                                    </span> Application error. </span>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="javascript:;">
-                                                <span class="time">2 days</span>
-                                                <span class="details">
-                                                    <span class="label label-sm label-icon label-danger">
-                                                        <i class="fa fa-bolt"></i>
-                                                    </span> Database overloaded 68%. </span>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="javascript:;">
-                                                <span class="time">3 days</span>
-                                                <span class="details">
-                                                    <span class="label label-sm label-icon label-danger">
-                                                        <i class="fa fa-bolt"></i>
-                                                    </span> A user IP blocked. </span>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="javascript:;">
-                                                <span class="time">4 days</span>
-                                                <span class="details">
-                                                    <span class="label label-sm label-icon label-warning">
-                                                        <i class="fa fa-bell-o"></i>
-                                                    </span> Storage Server #4 not responding dfdfdfd. </span>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="javascript:;">
-                                                <span class="time">5 days</span>
-                                                <span class="details">
-                                                    <span class="label label-sm label-icon label-info">
-                                                        <i class="fa fa-bullhorn"></i>
-                                                    </span> System Error. </span>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="javascript:;">
-                                                <span class="time">9 days</span>
-                                                <span class="details">
-                                                    <span class="label label-sm label-icon label-danger">
-                                                        <i class="fa fa-bolt"></i>
-                                                    </span> Storage server failed. </span>
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </li>
-                            </ul>
-                        </li>
-                    -->
-                        <li class="dropdown dropdown-user">
-                            <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
-                                <img alt="" class="img-circle" src="{{ base_url() }}assets/img/avatar.png" />
-                                <span class="username username-hide-on-mobile"> {{ucfirst(auth_username())}} </span>
-                                <i class="fa fa-angle-down"></i>
-                            </a>
-                            <ul class="dropdown-menu dropdown-menu-default">
-                                <li>
-                                    <a href="{{ base_url() }}profile">
-                                        <i class="icon-user"></i> My Profile </a>
-                                </li>
-                                <li>
-                                    <a href="{{ base_url() }}notification">
-                                        <i class="icon-bell"></i> Notif / Event </a>
-                                </li>
-                                <li>
-                                    <a href="{{ base_url() }}logout">
-                                        <i class="icon-key"></i> Log Out </a>
-                                </li>
-                            </ul>
-                        </li>
-                        <!-- END USER LOGIN DROPDOWN -->
-
-                    </ul>
-                </div>
-                <!-- END TOP NAVIGATION MENU -->
+<body>
+<!-- Pre-loader start -->
+<div class="theme-loader">
+    <div class="ball-scale">
+        <div class='contain'>
+            <div class="ring">
+                <div class="frame"></div>
             </div>
-            <!-- END HEADER INNER -->
+            <div class="ring">
+                <div class="frame"></div>
+            </div>
+            <div class="ring">
+                <div class="frame"></div>
+            </div>
+            <div class="ring">
+                <div class="frame"></div>
+            </div>
+            <div class="ring">
+                <div class="frame"></div>
+            </div>
+            <div class="ring">
+                <div class="frame"></div>
+            </div>
+            <div class="ring">
+                <div class="frame"></div>
+            </div>
+            <div class="ring">
+                <div class="frame"></div>
+            </div>
+            <div class="ring">
+                <div class="frame"></div>
+            </div>
+            <div class="ring">
+                <div class="frame"></div>
+            </div>
         </div>
-        <!-- END HEADER -->
-        <!-- BEGIN HEADER & CONTENT DIVIDER -->
-        <div class="clearfix"> </div>
-        <!-- END HEADER & CONTENT DIVIDER -->
-        <!-- BEGIN CONTAINER -->
-        <div class="page-container">
-            <!-- BEGIN SIDEBAR -->
-            <div class="page-sidebar-wrapper">
-                <!-- BEGIN SIDEBAR -->
-                <div class="page-sidebar navbar-collapse collapse">
-                    <!-- BEGIN SIDEBAR MENU -->
-                    <ul class="page-sidebar-menu  page-header-fixed " data-keep-expanded="false" data-auto-scroll="true" data-slide-speed="200" style="padding-top: 20px">
-
-                        <li class="sidebar-toggler-wrapper hide">
-                            <!-- BEGIN SIDEBAR TOGGLER BUTTON -->
-                            <div class="sidebar-toggler"> </div>
-                            <!-- END SIDEBAR TOGGLER BUTTON -->
-                        </li>
-
-                        <li class="heading">
-                            <h3 class="uppercase">Menu Navigation</h3>
-                        </li>
-                        @include('default.views.layouts.menu')
-                    </ul>
-                    <!-- END SIDEBAR MENU -->
-                    <!-- END SIDEBAR MENU -->
+    </div>
+</div>
+<!-- Pre-loader end -->
+<div id="pcoded" class="pcoded">
+    <div class="pcoded-overlay-box"></div>
+    <div class="pcoded-container navbar-wrapper">
+        <nav class="navbar header-navbar pcoded-header">
+            <div class="navbar-wrapper">
+                <div class="navbar-logo">
+                    <a class="mobile-menu" id="mobile-collapse" href="javascript:void(0)">
+                        <i class="feather icon-menu"></i>
+                    </a>
+                    <a href="index-1.htm">
+                        <img class="img-fluid" src="{{ base_url() }}assets/global/assets/images/logo.png" alt="Theme-Logo">
+                    </a>
+                    <a class="mobile-options">
+                        <i class="feather icon-more-horizontal"></i>
+                    </a>
                 </div>
-                <!-- END SIDEBAR -->
-            </div>
-            <!-- END SIDEBAR -->
-            <!-- BEGIN CONTENT -->
-            <div class="page-content-wrapper">
-                <!-- BEGIN CONTENT BODY -->
-                @yield('body')
-                <!-- END CONTENT BODY -->
-            </div>
-            <!-- END CONTENT -->
 
-            <!-- List Reminder  -->
-            <!-- <div id="reminder" style="z-index:99999;background-color:#F1F1F1;">
-                <div id="scollReminder">
-                    <div class="col-md-12" style="padding-top: 10px;">
-                       
-                       <a href="{{base_url()}}">
-                           <div class="alert alert-danger">
-                                <strong> Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit.</strong>
-                           </div>
-                       </a>
-                       <a href="{{base_url()}}">
-                           <div class="alert alert-danger">
-                                <strong> Lorem ipsum dolor sit amet, ei ius rebum dicit quaeque.</strong>
-                           </div>
-                       </a>
+                <div class="navbar-container container-fluid">
+                    <ul class="nav-left">
+                        <li class="header-search">
+                            <div class="main-search morphsearch-search">
+                                <div class="input-group">
+                                    <span class="input-group-addon search-close"><i class="feather icon-x"></i></span>
+                                    <input type="text" class="form-control">
+                                    <span class="input-group-addon search-btn"><i class="feather icon-search"></i></span>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <a href="javascript:void(0)" onclick="javascript:toggleFullScreen()">
+                                <i class="feather icon-maximize full-screen"></i>
+                            </a>
+                        </li>
+                    </ul>
+                    <ul class="nav-right">
+                        <li class="header-notification">
+                            <div class="dropdown-primary dropdown">
+                                <div class="dropdown-toggle" data-toggle="dropdown">
+                                    <i class="feather icon-bell"></i>
+                                    <span class="badge bg-c-pink">5</span>
+                                </div>
+                                <ul class="show-notification notification-view dropdown-menu" data-dropdown-in="fadeIn" data-dropdown-out="fadeOut">
+                                    <li>
+                                        <h6>Notifications</h6>
+                                        <label class="label label-danger">New</label>
+                                    </li>
+                                    <li>
+                                        <div class="media">
+                                            <img class="d-flex align-self-center img-radius" src="{{ base_url() }}assets/global/assets/images/avatar-4.jpg" alt="Generic placeholder image">
+                                            <div class="media-body">
+                                                <h5 class="notification-user">John Doe</h5>
+                                                <p class="notification-msg">Lorem ipsum dolor sit amet, consectetuer elit.</p>
+                                                <span class="notification-time">30 minutes ago</span>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="media">
+                                            <img class="d-flex align-self-center img-radius" src="{{ base_url() }}assets/global/assets/images/avatar-3.jpg" alt="Generic placeholder image">
+                                            <div class="media-body">
+                                                <h5 class="notification-user">Joseph William</h5>
+                                                <p class="notification-msg">Lorem ipsum dolor sit amet, consectetuer elit.</p>
+                                                <span class="notification-time">30 minutes ago</span>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="media">
+                                            <img class="d-flex align-self-center img-radius" src="{{ base_url() }}assets/global/assets/images/avatar-4.jpg" alt="Generic placeholder image">
+                                            <div class="media-body">
+                                                <h5 class="notification-user">Sara Soudein</h5>
+                                                <p class="notification-msg">Lorem ipsum dolor sit amet, consectetuer elit.</p>
+                                                <span class="notification-time">30 minutes ago</span>
+                                            </div>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="header-notification">
+                            <div class="dropdown-primary dropdown">
+                                <div class="displayChatbox dropdown-toggle" data-toggle="dropdown">
+                                    <i class="feather icon-message-square"></i>
+                                    <span class="badge bg-c-green">3</span>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="user-profile header-notification">
+                            <div class="dropdown-primary dropdown">
+                                <div class="dropdown-toggle" data-toggle="dropdown">
+                                    <img src="{{ base_url() }}assets/global/assets/images/avatar-4.jpg" class="img-radius" alt="User-Profile-Image">
+                                    <span>John Doe</span>
+                                    <i class="feather icon-chevron-down"></i>
+                                </div>
+                                <ul class="show-notification profile-notification dropdown-menu" data-dropdown-in="fadeIn" data-dropdown-out="fadeOut">
+                                    <li>
+                                        <a href="javascript:void(0)">
+                                            <i class="feather icon-settings"></i> Settings
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="user-profile.htm">
+                                            <i class="feather icon-user"></i> Profile
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="email-inbox.htm">
+                                            <i class="feather icon-mail"></i> My Messages
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="auth-lock-screen.htm">
+                                            <i class="feather icon-lock"></i> Lock Screen
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="auth-normal-sign-in.htm">
+                                            <i class="feather icon-log-out"></i> Logout
+                                        </a>
+                                    </li>
+                                </ul>
+
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Sidebar chat start -->
+        <div id="sidebar" class="users p-chat-user showChat">
+            <div class="had-container">
+                <div class="card card_main p-fixed users-main">
+                    <div class="user-box">
+                        <div class="chat-inner-header">
+                            <div class="back_chatBox">
+                                <div class="right-icon-control">
+                                    <input type="text" class="form-control  search-text" placeholder="Search Friend" id="search-friends">
+                                    <div class="form-icon">
+                                        <i class="icofont icofont-search"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="main-friend-list">
+                            <div class="media userlist-box" data-id="1" data-status="online" data-username="Josephin Doe" data-toggle="tooltip" data-placement="left" title="Josephin Doe">
+                                <a class="media-left" href="javascript:void(0)">
+                                    <img class="media-object img-radius img-radius" src="{{ base_url() }}assets/global/assets/images/avatar-3.jpg" alt="Generic placeholder image ">
+                                    <div class="live-status bg-success"></div>
+                                </a>
+                                <div class="media-body">
+                                    <div class="f-13 chat-header">Josephin Doe</div>
+                                </div>
+                            </div>
+                            <div class="media userlist-box" data-id="2" data-status="online" data-username="Lary Doe" data-toggle="tooltip" data-placement="left" title="Lary Doe">
+                                <a class="media-left" href="javascript:void(0)">
+                                    <img class="media-object img-radius" src="{{ base_url() }}assets/global/assets/images/avatar-2.jpg" alt="Generic placeholder image">
+                                    <div class="live-status bg-success"></div>
+                                </a>
+                                <div class="media-body">
+                                    <div class="f-13 chat-header">Lary Doe</div>
+                                </div>
+                            </div>
+                            <div class="media userlist-box" data-id="3" data-status="online" data-username="Alice" data-toggle="tooltip" data-placement="left" title="Alice">
+                                <a class="media-left" href="javascript:void(0)">
+                                    <img class="media-object img-radius" src="{{ base_url() }}assets/global/assets/images/avatar-4.jpg" alt="Generic placeholder image">
+                                    <div class="live-status bg-success"></div>
+                                </a>
+                                <div class="media-body">
+                                    <div class="f-13 chat-header">Alice</div>
+                                </div>
+                            </div>
+                            <div class="media userlist-box" data-id="4" data-status="online" data-username="Alia" data-toggle="tooltip" data-placement="left" title="Alia">
+                                <a class="media-left" href="javascript:void(0)">
+                                    <img class="media-object img-radius" src="{{ base_url() }}assets/global/assets/images/avatar-3.jpg" alt="Generic placeholder image">
+                                    <div class="live-status bg-success"></div>
+                                </a>
+                                <div class="media-body">
+                                    <div class="f-13 chat-header">Alia</div>
+                                </div>
+                            </div>
+                            <div class="media userlist-box" data-id="5" data-status="online" data-username="Suzen" data-toggle="tooltip" data-placement="left" title="Suzen">
+                                <a class="media-left" href="javascript:void(0)">
+                                    <img class="media-object img-radius" src="{{ base_url() }}assets/global/assets/images/avatar-2.jpg" alt="Generic placeholder image">
+                                    <div class="live-status bg-success"></div>
+                                </a>
+                                <div class="media-body">
+                                    <div class="f-13 chat-header">Suzen</div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
-             <div id="btn-reminder" style="position:absolute;right:0;top:60px;">
-                <button class="btn yellow-crusta"><i class="fa fa-bell"></i>Info <span class="badge badge-danger"> 2 </span></button>
-            </div> -->
-           
         </div>
-        <!-- END CONTAINER -->
-        <!-- BEGIN FOOTER -->
-        <div class="page-footer">
-            <div class="page-footer-inner"> 2017 &copy; Octavian Panggestu</div>
-            <div class="scroll-to-top">
-                <i class="icon-arrow-up"></i>
+        <!-- Sidebar inner chat start-->
+        <div class="showChat_inner">
+            <div class="media chat-inner-header">
+                <a class="back_chatBox">
+                    <i class="feather icon-chevron-left"></i> Josephin Doe
+                </a>
+            </div>
+            <div class="media chat-messages">
+                <a class="media-left photo-table" href="javascript:void(0)">
+                    <img class="media-object img-radius img-radius m-t-5" src="{{ base_url() }}assets/global/assets/images/avatar-3.jpg" alt="Generic placeholder image">
+                </a>
+                <div class="media-body chat-menu-content">
+                    <div class="">
+                        <p class="chat-cont">I'm just looking around. Will you tell me something about yourself?</p>
+                        <p class="chat-time">8:20 a.m.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="media chat-messages">
+                <div class="media-body chat-menu-reply">
+                    <div class="">
+                        <p class="chat-cont">I'm just looking around. Will you tell me something about yourself?</p>
+                        <p class="chat-time">8:20 a.m.</p>
+                    </div>
+                </div>
+                <div class="media-right photo-table">
+                    <a href="javascript:void(0)">
+                        <img class="media-object img-radius img-radius m-t-5" src="{{ base_url() }}assets/global/assets/images/avatar-4.jpg" alt="Generic placeholder image">
+                    </a>
+                </div>
+            </div>
+            <div class="chat-reply-box p-b-20">
+                <div class="right-icon-control">
+                    <input type="text" class="form-control search-text" placeholder="Share Your Thoughts">
+                    <div class="form-icon">
+                        <i class="feather icon-navigation"></i>
+                    </div>
+                </div>
             </div>
         </div>
-        <!-- END FOOTER -->
-        <!--[if lt IE 9]>
-        <script src="{{ base_url() }}assets/plugins/respond.min.js"></script>
-        <script src="{{ base_url() }}assets/plugins/excanvas.min.js"></script>
-        <![endif]-->
-        <!-- BEGIN CORE PLUGINS -->
-        <script src="{{ base_url() }}assets/plugins/jquery.min.js" type="text/javascript"></script>
-        <script src="{{ base_url() }}assets/plugins/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
-        <script src="{{ base_url() }}assets/plugins/js.cookie.min.js" type="text/javascript"></script>
-        <script src="{{ base_url() }}assets/plugins/bootstrap-hover-dropdown/bootstrap-hover-dropdown.min.js" type="text/javascript"></script>
-        <script src="{{ base_url() }}assets/plugins/jquery-slimscroll/jquery.slimscroll.min.js" type="text/javascript"></script>
-        <script src="{{ base_url() }}assets/plugins/jquery.blockui.min.js" type="text/javascript"></script>
-        <script src="{{ base_url() }}assets/plugins/uniform/jquery.uniform.min.js" type="text/javascript"></script>
-        <script src="{{ base_url() }}assets/plugins/bootstrap-switch/js/bootstrap-switch.min.js" type="text/javascript"></script>
-        <script src="{{ base_url() }}assets/plugins/bootstrap-datetimepicker/js/bootstrap-datetimepicker.min.js" type="text/javascript"></script>
-        <script src="{{ base_url() }}assets/plugins/bootstrap-datepicker/js/bootstrap-datepicker.min.js" type="text/javascript"></script>
-        <!-- END CORE PLUGINS -->
-        <!-- BEGIN PAGE LEVEL PLUGINS -->
-        <script src="{{ base_url() }}assets/scripts/datatable.js" type="text/javascript"></script>
-        <script src="{{ base_url() }}assets/plugins/datatables/datatables.min.js" type="text/javascript"></script>
-        <script src="{{ base_url() }}assets/plugins/datatables/plugins/bootstrap/datatables.bootstrap.js" type="text/javascript"></script>
-        <script src="{{ base_url() }}assets/plugins/datatables/fnPagingInfo.js" type="text/javascript"></script>
-        <script src="{{ base_url() }}assets/plugins/datatables/jquery.dataTables.delay.min.js" type="text/javascript"></script>
-        <!-- END PAGE LEVEL PLUGINS -->
-        <!-- BEGIN THEME GLOBAL SCRIPTS -->
-        <script src="{{ base_url() }}assets/scripts/app.js" type="text/javascript"></script>
-        <!-- END THEME GLOBAL SCRIPTS -->
-        <!-- BEGIN PAGE LEVEL SCRIPTS -->
-        <script src="{{ base_url() }}assets/scripts/table-datatables-responsive.min.js" type="text/javascript"></script>
-        <!-- END PAGE LEVEL SCRIPTS -->
-        <!-- BEGIN THEME LAYOUT SCRIPTS -->
-        <script src="{{ base_url() }}assets/scripts/layout.js" type="text/javascript"></script>
-        <script src="{{ base_url() }}assets/scripts/demo.min.js" type="text/javascript"></script>
-        <script src="{{ base_url() }}assets/scripts/quick-sidebar.min.js" type="text/javascript"></script>
-        <script src="{{ base_url() }}assets/scripts/knockout-3.4.0.js" type="text/javascript"></script>
-        <script src="{{ base_url() }}assets/plugins/jquery-validation/js/jquery.validate.js" type="text/javascript"></script>
-        <script src="{{ base_url() }}assets/plugins/form/jquery.form.js" type="text/javascript"></script>
-        <script src="{{ base_url() }}assets/plugins/bootstrap-toastr/toastr.min.js" type="text/javascript"></script>
-        <script src="{{ base_url() }}assets/plugins/confirm/js/jquery-confirm.js" type="text/javascript"></script>
-        <script src="{{ base_url() }}assets/plugins/bootstrap-select/js/bootstrap-select.js" type="text/javascript"></script>
-        <script src="{{ base_url() }}assets/plugins/moment.min.js" type="text/javascript"></script>
-        <script src="{{ base_url() }}assets/plugins/currency/currency.js" type="text/javascript"></script>
-        <script src="{{ base_url() }}assets/plugins/jquery-mask/jquery.mask.js" type="text/javascript"></script>
-        <script src="{{ base_url() }}assets/plugins/jquery.chained.min.js" type="text/javascript"></script>
-        <script src="{{ base_url() }}assets/plugins/jquery.chained.remote.min.js" type="text/javascript"></script>
-        <script src="{{ base_url() }}assets/plugins/easy-autocomplete/jquery.easy-autocomplete.js" type="text/javascript"></script>
-        <script src="{{ base_url() }}assets/plugins/select2/js/select2.full.js" type="text/javascript"></script>
-        <script src="{{ base_url() }}assets/plugins/input-mask/inputmask.js" type="text/javascript"></script>
-        <script src="{{ base_url() }}assets/plugins/input-mask/jquery.inputmask.js" type="text/javascript"></script>
-        <script src="{{ base_url() }}assets/plugins/highcharts/js/highcharts.js" type="text/javascript"></script>
-        <script src="{{ base_url() }}assets/plugins/tipso/src/tipso.min.js" type="text/javascript"></script>
-        <script src="{{ base_url() }}assets/scripts/slidereveal.js" type="text/javascript"></script>
-        <script src="{{ base_url() }}assets/plugins/noty/packaged/jquery.noty.packaged.min.js" type="text/javascript" ></script>
-        <script src="{{ base_url() }}assets/plugins/ckeditor/ckeditor.js" type="text/javascript"></script>
-        <script src="{{ base_url() }}assets/plugins/ckeditor/adapters/jquery.js" type="text/javascript"></script>
-        <!-- END THEME LAYOUT SCRIPTS -->
-        <script type="text/javascript">    
-            
-            $(function() {
-                $("input[type='search']").focus();
-            });
-            
-            var dinterval;
-            //buat object date berdasarkan waktu di server
+        <!-- Sidebar inner chat end-->
+        <div class="pcoded-main-container">
+            <div class="pcoded-wrapper">
+                @include('default.views.layouts.sidebar')
 
-            var serverTime = new Date(<?php print date('Y, m, d, H, i, s, 0'); ?>);
-                
-            //buat object date berdasarkan waktu di client
-            var clientTime = new Date();
-            //hitung selisih
-            var Diff = serverTime.getTime() - clientTime.getTime();    
-            //fungsi displayTime yang dipanggil di bodyOnLoad dieksekusi tiap 1000ms = 1detik
-            function displayServerTime(){
-                    //buat object date berdasarkan waktu di client
-                    var clientTime = new Date();
-                    //buat object date dengan menghitung selisih waktu client dan server
-                    var time = new Date(clientTime.getTime() + Diff);
-                    
-                    //ambil nilai jam
-                    var sh = time.getHours().toString();
-                    //ambil nilai menit
-                    var sm = time.getMinutes().toString();
-                    //ambil nilai detik
-                    var ss = time.getSeconds().toString();
-                    //tampilkan jam:menit:detik dengan menambahkan angka 0 jika angkanya cuma satu digit (0-9)
-                    document.getElementById("clock").innerHTML = (sh.length==1?"0"+sh:sh) + ":" + (sm.length==1?"0"+sm:sm) + ":" + (ss.length==1?"0"+ss:ss);
-                    
-            }
-            // 1,000 means 1 second.
-            dinterval = setInterval('displayServerTime()', 1000);
+                <div class="pcoded-content">
+                    <div class="pcoded-inner-content">
+                        <!-- Main-body start -->
+                        <div class="main-body">
 
-            function toggle(){
-                var date_param = $('#date_param').val();
-                if(date_param == '0'){
-                    $('#datetime_navbar').attr('style', 'position: fixed;left: 53px;top: 15px;font-weight: bold;color: #FFF;');
-                    $('#date_param').val('1');
-                }else{
-                    $('#datetime_navbar').attr('style', 'position: fixed;left: 249px;top: 15px;font-weight: bold;color: #FFF;');
-                    $('#date_param').val('0');
-                }
-            }
-            
-        </script>
-        <!-- Reminder -->
-        <script type="text/javascript">
-            // $("#reminder").slideReveal({
-            //   trigger: $("#btn-reminder"),
-            //   'position': 'right'
-            // }); 
+                            @yield('body')
 
-            // $('#scollReminder').slimScroll({
-            //     position: 'left',
-            //     height: 'auto',
-            //     railVisible: true,
-            //     alwaysVisible: true
-            // });
-            
-        </script>
-        @section('scripts') @show
-    </body>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Warning Section Starts -->
+<!-- Older IE warning message -->
+<!--[if lt IE 10]>
+<div class="ie-warning">
+    <h1>Warning!!</h1>
+    <p>You are using an outdated version of Internet Explorer, please upgrade <br/>to any of the following web browsers
+        to access this website.</p>
+    <div class="iew-container">
+        <ul class="iew-download">
+            <li>
+                <a href="http://www.google.com/chrome/">
+                    <img src="../files/assets/images/browser/chrome.png" alt="Chrome">
+                    <div>Chrome</div>
+                </a>
+            </li>
+            <li>
+                <a href="https://www.mozilla.org/en-US/firefox/new/">
+                    <img src="../files/assets/images/browser/firefox.png" alt="Firefox">
+                    <div>Firefox</div>
+                </a>
+            </li>
+            <li>
+                <a href="http://www.opera.com">
+                    <img src="../files/assets/images/browser/opera.png" alt="Opera">
+                    <div>Opera</div>
+                </a>
+            </li>
+            <li>
+                <a href="https://www.apple.com/safari/">
+                    <img src="../files/assets/images/browser/safari.png" alt="Safari">
+                    <div>Safari</div>
+                </a>
+            </li>
+            <li>
+                <a href="http://windows.microsoft.com/en-us/internet-explorer/download-ie">
+                    <img src="../files/assets/images/browser/ie.png" alt="">
+                    <div>IE (9 & above)</div>
+                </a>
+            </li>
+        </ul>
+    </div>
+    <p>Sorry for the inconvenience!</p>
+</div>
+<![endif]-->
+<!-- Warning Section Ends -->
+    <!-- Required Jquery -->
+    <script type="text/javascript" src="{{ base_url() }}assets/global/bower_components/jquery/js/jquery.min.js"></script>
+    <script type="text/javascript" src="{{ base_url() }}assets/global/bower_components/jquery-ui/js/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="{{ base_url() }}assets/global/bower_components/popper.js/js/popper.min.js"></script>
+    <script type="text/javascript" src="{{ base_url() }}assets/global/bower_components/bootstrap/js/bootstrap.min.js"></script>
+    <!-- jquery slimscroll js -->
+    <script type="text/javascript" src="{{ base_url() }}assets/global/bower_components/jquery-slimscroll/js/jquery.slimscroll.js"></script>
+    <!-- modernizr js -->
+    <script type="text/javascript" src="{{ base_url() }}assets/global/bower_components/modernizr/js/modernizr.js"></script>
+    <script type="text/javascript" src="{{ base_url() }}assets/global/bower_components/modernizr/js/css-scrollbars.js"></script>
+    <!-- data-table js -->
+    <script src="{{ base_url() }}assets/scripts/datatable.js" type="text/javascript"></script>
+    <script src="{{ base_url() }}assets/plugins/datatables/datatables.min.js" type="text/javascript"></script>
+    <script src="{{ base_url() }}assets/plugins/datatables/plugins/bootstrap/datatables.bootstrap.js" type="text/javascript"></script>
+    <script src="{{ base_url() }}assets/plugins/datatables/fnPagingInfo.js" type="text/javascript"></script>
+    <script src="{{ base_url() }}assets/plugins/datatables/jquery.dataTables.delay.min.js" type="text/javascript"></script>
+    <script src="{{ base_url() }}assets/scripts/table-datatables-responsive.min.js" type="text/javascript"></script>
+
+    <!-- i18next.min.js -->
+    <script type="text/javascript" src="{{ base_url() }}assets/global/bower_components/i18next/js/i18next.min.js"></script>
+    <script type="text/javascript" src="{{ base_url() }}assets/global/bower_components/i18next-xhr-backend/js/i18nextXHRBackend.min.js"></script>
+    <script type="text/javascript" src="{{ base_url() }}assets/global/bower_components/i18next-browser-languagedetector/js/i18nextBrowserLanguageDetector.min.js"></script>
+    <script type="text/javascript" src="{{ base_url() }}assets/global/bower_components/jquery-i18next/js/jquery-i18next.min.js"></script>
+    <!-- Custom js -->
+    <script src="{{ base_url() }}assets/global/assets/js/pcoded.min.js"></script>
+    <script src="{{ base_url() }}assets/global/assets/js/vartical-layout.min.js"></script>
+    <script src="{{ base_url() }}assets/global/assets/js/jquery.mCustomScrollbar.concat.min.js"></script>
+    <script type="text/javascript" src="{{ base_url() }}assets/global/assets/js/script.js"></script>
+
+    <script type="text/javascript" src="{{ base_url() }}assets/global/bower_components/bootstrap-switch/js/bootstrap-switch.min.js"></script>
+    <script type="text/javascript" src="{{ base_url() }}assets/global/bower_components/select2/js/select2.full.min.js"></script>
+    <script type="text/javascript" src="{{ base_url() }}assets/global/bower_components/bootstrap-toastr/toastr.min.js"></script>
+    <script src="{{ base_url() }}assets/plugins/jquery-validation/js/jquery.validate.js" type="text/javascript"></script>
+    
+    <script type="text/javascript">    
+        $(function() {
+            $("input[type='search']").focus();
+        });
+    </script>
+
+    @section('scripts') @show
+
+</body>
 
 </html>

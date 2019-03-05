@@ -1,62 +1,143 @@
 @extends('default.views.layouts.default')
 
-@section('title') {{ lang('system_name') }} - {{ lang('menus') }} @stop
+@section('title') {{ lang('system_name') }} - Menus @stop
 
 @section('body')
+<style type="text/css">
+    #uniform-chk_status{
+        display: none !important;
+    }
 
-<div class="page-wrapper">
-    <!-- Page-header start -->
-    <div class="page-header">
-        <div class="row align-items-end">
-            <div class="col-lg-8">
-                <div class="page-header-title">
-                    <div class="d-inline">
-                        <h4>{{ lang('menus') }}</h4>
-                        <span>{{ lang('menu_descriptions') }}</span>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4">
-                <div class="page-header-breadcrumb">
-                    <ul class="breadcrumb-title">
-                        <li class="breadcrumb-item">
-                            <a href="{{ base_url() }}"> <i class="feather icon-home"></i> </a>
-                        </li>
-                        <li class="breadcrumb-item"><a href="javascript:void(0)">{{ lang('master') }}</a> </li>
-                        <li class="breadcrumb-item"><a href="javascript:void(0)">{{ lang('menus') }}</a> </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
+</style>
+<div class="page-content">
+    <!-- BEGIN PAGE HEADER-->
+   
+    <!-- BEGIN PAGE BAR -->
+    <div class="page-bar">
+        <ul class="page-breadcrumb">
+            <li>
+                <a href="{{ base_url() }}">Dashboard</a>
+                <i class="fa fa-circle"></i>
+            </li>
+            <li>
+                <span>Menus</span>
+            </li>
+        </ul>
+        
     </div>
-    <!-- Page-header end -->
-
-    <div class="page-body">
-        <div class="row">
-            <div class="col-sm-12">
-                <div class="card">
-                    <div class="card-block">
-                        <div class="dt-responsive table-responsive">
-                            <table id="table-menu" class="table table-striped table-bordered table-hover dt-responsive nowrap" width="100%" >
-                                <thead>
-                                    <tr>
-                                        <th width="10%">{{ lang('options') }}</th>
-                                        <th width="14%">{{ lang('menu_code') }}</th>
-                                        <th>{{ lang('menu_name') }}</th>
-                                        <th>{{ lang('menu_parent') }}</th>
-                                        <th>{{ lang('menu_link') }}</th>
-                                        <th>{{ lang('status') }}</th>
-                                    </tr>
-                                </thead>
-                            </table>
-                        </div>
+    <!-- END PAGE BAR -->
+    <!-- BEGIN PAGE TITLE-->
+    <h3 class="page-title">Menus</h3>
+    <!-- END PAGE TITLE-->
+    <!-- END PAGE HEADER-->
+    <div class="row">
+        <div class="col-md-12">
+            <!-- BEGIN EXAMPLE TABLE PORTLET-->
+            <div id="table-wrapper" class="portlet light bordered">
+                <div class="portlet-title">
+                    <div class="caption font-dark">
+                        <i class="icon-grid font-dark"></i>
+                        <span class="caption-subject">Menus</span>
+                    </div>
+                    <div class="tools">
+                        @if($add_access == 1)
+                            <button onclick="add_menu()" class="btn btn-primary btn-sm"><i class="fa fa-plus"></i>{{lang('new_menu')}}</button>
+                        @endif
                     </div>
                 </div>
+                <div class="portlet-body">
+
+                        
+                    <table id="table-menu" class="table table-striped table-bordered table-hover dt-responsive" width="100%" >
+                        <thead>
+                            <tr>
+                                <th width="10%"><?=lang('options')?></th>
+                                <th width="14%"><?=lang('menu_code')?> </th>
+                                <th><?=lang('menu_name')?> </th>
+                                <th><?=lang('menu_parent')?> </th>
+                                <th><?=lang('menu_link')?> </th>
+                                <th><?=lang('status')?> </th>
+                            </tr>
+                        </thead>
+                    </table>
+                </div>
             </div>
+            <!-- END EXAMPLE TABLE PORTLET-->
         </div>
     </div>
 </div>
 
+<!-- Bootstrap modal -->
+<div class="modal fade" id="modal_form" role="dialog">
+    <div class="modal-dialog" style="width:600px;height:200px;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h3 class="modal-title">{{ lang('new_menu') }} </h3>
+            </div>
+            <div class="modal-body">
+                {{ form_open(null,array('id' => 'form-menu', 'class' => 'form-horizontal')) }}
+                <input type="hidden" name="menu_id" value="" id="menu_id">
+        
+                <div class="form-group" style="display: none;">
+                    <label class="col-lg-4 control-label"><?=lang('menu_code')?> <span class="text-danger">*</span></label>
+                    <div class="col-lg-8">
+                        <input type="text" class="form-control"  name="menu_code" placeholder="Input Menu Code" onkeyup="angka(this)" maxlength="10" value="{{$menu_id}}" autocomplete="off" readonly="" required>
+                    </div>
+                </div>
+    
+                 <div class="form-group form-md-line-input">
+                    <label class="col-lg-3 control-label">{{lang('menu_name')}}<span class="text-danger bold">*</span></label>
+                    <div class="col-lg-8">
+                        {{ form_input('menu_name',set_value('menu_name'),'id="menu_name" class="form-control" placeholder="Input Menu Name" autocomplete="off" required')}}
+                        <div class="form-control-focus"> </div>
+                    </div>
+                </div>
+    
+                <div class="form-group form-md-line-input">
+                    <label class="col-lg-3 control-label"><?=lang('menu_link')?><span class="text-danger bold">*</span></label>
+                    <div class="col-lg-8">
+                        <input type="text" class="form-control" name="menu_link" placeholder="Input Menu Link" value="" autocomplete="off" required>
+                        <div class="form-control-focus"> </div>
+                    </div>
+                </div>
+
+                <div class="form-group form-md-line-input">
+                    <label class="col-lg-3 control-label"><?=lang('menu_language')?><span class="text-danger bold">*</span></label>
+                    <div class="col-lg-8">
+                        <input type="text" class="form-control" name="menu_language" placeholder="Input Menu Language" value="" autocomplete="off" required>
+                        <div class="form-control-focus"> </div>
+                    </div>
+                </div>
+
+               <div class="form-group">
+                    <label class="col-lg-3 control-label"><?=lang('menu_parent')?><span class="text-danger bold">*</span></label>
+                    <div class="col-lg-8">
+                        <select name="menu_parent" id="parent_menu_id" class="form-control" required>
+                            <option value="0">- Parent -</option>
+                            @if (!empty($parent_menus)) 
+                                @foreach ($parent_menus as $parent) 
+                                    <option value="{{$parent->menu_id}}">{{$parent->menu_name}}</option>
+                                @endforeach
+                            @endif
+                        </select>
+                    </div>
+                </div> 
+                <div class="form-group">
+                    <label class="col-lg-3 control-label"><?=lang('status')?><span class="text-danger bold">*</span></label>
+                    <div class="col-lg-8">
+                        <input type="checkbox" name="status" class="form-control" id="chk_status" checked>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="submit" class="btn btn-primary">Save</button>
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
+            </div>
+            {{ form_close() }}
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
 @stop
 
 @section('scripts')

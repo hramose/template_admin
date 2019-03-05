@@ -1,5 +1,5 @@
 <?php
-## GENERAL	##
+## SYSTEM DESCRIPTIONS  ##
 $lang['system_name'] = 'My Template';
 $lang['system_description'] = 'Administrator Templates';
 $lang['system_author'] = 'Octavian Panggestu';
@@ -28,6 +28,9 @@ $lang['select'] = 'Select ';
 $lang['select_your_option'] = 'Select your option';
 $lang['yes'] = 'Yes';
 $lang['no'] = 'No';
+$lang['navigation'] = 'Navigation';
+$lang['dashboard'] = 'Dashboard';
+$lang['history'] = 'History';
 ## END GENERAL	##
 
 ## BUTTON	##
@@ -50,6 +53,7 @@ $lang['reports'] = 'Reports';
 
 ## MENU ##
 $lang['menus'] = 'Menus';
+$lang['menu_descriptions'] = 'Manage Menu';
 $lang['menu'] = 'Menu';
 $lang['menu_code'] = 'Menu Code';
 $lang['menu_name'] = 'Menu Name';
