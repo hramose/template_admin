@@ -37,9 +37,21 @@ class Menus extends MX_Controller {
              END) AS status'
         );
 
+        // Ordering Data
+        $header_columns = array(
+            'menu.menu_code',
+            'menu.menu_name',
+            'sub_menu.menu_name',
+            'menu.menu_link',
+            'menu.status'
+        );
+
         $from = "menu";
         $where = "";
-        $order_by = "menu.menu_code ASC";
+        
+        // Ordering
+        $order_by = $header_columns[$this->input->get('iSortCol_0')]." ".$this->input->get('sSortDir_0');
+
         $join[] = array('menu as sub_menu', 'sub_menu.menu_id = menu.parent_menu_id', 'left');
 
         if ($this->input->get('sSearch') != '') {
@@ -65,44 +77,36 @@ class Menus extends MX_Controller {
         $aa_data = $selected_data['aaData'];
         $new_aa_data = array();
         
-        
         foreach ($aa_data as $row) {
             $row_value = array();
 
-            $dropdown_option = '';
-            $dropdown_option .= '<div class="btn-group" style="position:absolute !important; display: block; !important">';
-            $dropdown_option .= '<button class="btn btn-xs btn-default dropdown-toggle" data-toggle="dropdown">';
-            $dropdown_option .= lang('options');
-            $dropdown_option .= '<span class="caret"></span>';
-            $dropdown_option .= '</button>';
-            $dropdown_option .= '<ul class="dropdown-menu">';
+            $btn_action = '';
             if($this->user_profile->get_user_access('Updated', 'menu'))
-                $dropdown_option .= '<li><a href="javascript:void()" title="' . lang('update_option') . '" onclick="viewData(' . $row->menu_id . ')"><i class="fa fa-pencil"></i> '. lang('update_option') . '</a></li>';
+                $btn_action .= '<a class="btn btn-warning btn-round btn-only-icon" href="javascript:void()" title="' . lang('update_option') . '" onclick="viewData(' . $row->menu_id . ')"><i class="fa fa-pencil only-icon"></i></a> ';
             if($this->user_profile->get_user_access('Deleted', 'menu'))
-                $dropdown_option .= '<li><a href="javascript:void()" title="' . lang('delete_option') . '" onclick="deleteData(' . $row->menu_id . ')"><i class="fa fa-trash-o"></i> ' . lang('delete_option') . '</a></li>';
-            $dropdown_option .= '</ul></div>';
+                $btn_action .= '<a class="btn btn-danger btn-round btn-only-icon" href="javascript:void()" title="' . lang('delete_option') . '" onclick="deleteData(' . $row->menu_id . ')"><i class="fa fa-trash-o only-icon"></i></a> ';
 
             $row_menu_code = '';
-            $row_menu_code .= '<div class="pull-left">';
+            $row_menu_code .= '<div class="order-menu">';
             $row_menu_code .= '<div id="view_' . $row->menu_id . '">' . $row->menu_code . '</div>';
-            $row_menu_code .= '<div id="input_' . $row->menu_id . '" style="display: none;"><input type="text" class="form-control input-xs" id="menu_code_' . $row->menu_id . '" value="' . $row->menu_code . '" onkeyup="angka(this)" style="width: 50%;text-align:center" /></div>';
+            $row_menu_code .= '<div id="input_' . $row->menu_id . '" style="display: none;"><input type="text" class="form-control input-xs only_number" id="menu_code_' . $row->menu_id . '" value="' . $row->menu_code . '" style="width: 20%;text-align:center" /></div>';
             $row_menu_code .= '</div>';
-            $row_menu_code .= '<div class="pull-right">';
+            $row_menu_code .= '<div class="change-order-menu">';
             $row_menu_code .= '<div>';
 
             if($this->user_profile->get_user_access('Updated', 'menu')){
-                $row_menu_code .= '<a onclick="changeOrderMenu(' . $row->menu_id . ')" id="link_' . $row->menu_id . '"><i class="fa fa-edit"></i> ' . lang('change') . '</a>';
-                $row_menu_code .= '<a onclick="saveOrderMenu(' . $row->menu_id . ')" id="save_' . $row->menu_id . '" style="display: none;"><i class="fa fa-save"></i> ' . lang('save_menu') . '</a>';
+                $row_menu_code .= '<a class="btn btn-warning btn-icon" onclick="changeOrderMenu(' . $row->menu_id . ')" id="link_' . $row->menu_id . '"><i class="fa fa-sort"></i></a>';
+                $row_menu_code .= '<a class="btn btn-success btn-icon" onclick="saveOrderMenu(' . $row->menu_id . ')" id="save_' . $row->menu_id . '" style="display: none;"><i class="fa fa-save"></i></a>';
             }
             
             $row_menu_code .= '</div></div>';
 
-            $row_value[] = $dropdown_option;
             $row_value[] = $row_menu_code;
             $row_value[] = $row->menu_name;
             $row_value[] = ($row->nama_sub_menu == '') ? 'Parent' : ucwords($row->nama_sub_menu);
             $row_value[] = $row->menu_link;
-            $row_value[] = ($row->status == 'Active') ? '<span class="label label-success">Active</span>' : '<span class="label label-danger">Not Active</span';
+            $row_value[] = ($row->status == 'Active') ? '<span class="label label-success">Active</span>' : '<span class="label label-danger">Not Active</span>';
+            $row_value[] = $btn_action;
             $new_aa_data[] = $row_value;
         }
         $selected_data['aaData'] = $new_aa_data;

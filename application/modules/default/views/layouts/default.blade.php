@@ -26,20 +26,26 @@
     <link rel="stylesheet" type="text/css" href="{{ base_url() }}assets/global/assets/icon/themify-icons/themify-icons.css">
     <!-- Ico Font -->
     <link rel="stylesheet" type="text/css" href="{{ base_url() }}assets/global/assets/icon/icofont/css/icofont.css">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" type="text/css" href="{{ base_url() }}assets/global/assets/icon/font-awesome/css/font-awesome.min.css">    
     <!-- Feather Awesome -->
     <link rel="stylesheet" type="text/css" href="{{ base_url() }}assets/global/assets/icon/feather/css/feather.css">
-    <!-- Style.css -->
-    <link rel="stylesheet" type="text/css" href="{{ base_url() }}assets/global/assets/css/style.css">
-    <link rel="stylesheet" type="text/css" href="{{ base_url() }}assets/global/assets/css/jquery.mCustomScrollbar.css">
     <!-- Data Table -->
-    <link href="{{ base_url() }}assets/plugins/datatables/datatables.min.css" rel="stylesheet" type="text/css" />
-    <link href="{{ base_url() }}assets/plugins/datatables/plugins/bootstrap/datatables.bootstrap.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="{{ base_url() }}assets/global/bower_components/datatables.net-bs4/css/dataTables.bootstrap4.min.css">
+    <link rel="stylesheet" type="text/css" href="{{ base_url() }}assets/global/assets/pages/data-table/css/buttons.dataTables.min.css">
+    <link rel="stylesheet" type="text/css" href="{{ base_url() }}assets/global/bower_components/datatables.net-responsive-bs4/css/responsive.bootstrap4.min.css">
+    <link rel="stylesheet" type="text/css" href="{{ base_url() }}assets/global/assets/pages/data-table/extensions/buttons/css/buttons.dataTables.min.css">
     <!-- Bootstrap Switch -->
     <link rel="stylesheet" type="text/css" href="{{ base_url() }}assets/global/bower_components/bootstrap-switch/css/bootstrap-switch.min.css">
     <!-- Select2 -->
     <link rel="stylesheet" type="text/css" href="{{ base_url() }}assets/global/bower_components/select2/css/select2.min.css">
     <!-- Bootstrap Toastr -->
     <link rel="stylesheet" type="text/css" href="{{ base_url() }}assets/global/bower_components/bootstrap-toastr/toastr.css">
+    <!-- JQuery Confirm -->
+    <link href="{{ base_url() }}assets/plugins/confirm/css/jquery-confirm.css" rel="stylesheet" type="text/css" />
+    <!-- Style.css -->
+    <link rel="stylesheet" type="text/css" href="{{ base_url() }}assets/global/assets/css/style.css">
+    <link rel="stylesheet" type="text/css" href="{{ base_url() }}assets/global/assets/css/jquery.mCustomScrollbar.css">
 </head>
 
 <body>
@@ -392,12 +398,22 @@
     <script type="text/javascript" src="{{ base_url() }}assets/global/bower_components/modernizr/js/modernizr.js"></script>
     <script type="text/javascript" src="{{ base_url() }}assets/global/bower_components/modernizr/js/css-scrollbars.js"></script>
     <!-- data-table js -->
-    <script src="{{ base_url() }}assets/scripts/datatable.js" type="text/javascript"></script>
-    <script src="{{ base_url() }}assets/plugins/datatables/datatables.min.js" type="text/javascript"></script>
-    <script src="{{ base_url() }}assets/plugins/datatables/plugins/bootstrap/datatables.bootstrap.js" type="text/javascript"></script>
-    <script src="{{ base_url() }}assets/plugins/datatables/fnPagingInfo.js" type="text/javascript"></script>
+    <script type="text/javascript" src="{{ base_url() }}assets/global/bower_components/datatables.net/js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" src="{{ base_url() }}assets/global/bower_components/datatables.net-buttons/js/dataTables.buttons.min.js"></script>
+    <script type="text/javascript" src="{{ base_url() }}assets/global/assets/pages/data-table/js/jszip.min.js"></script>
+    <script type="text/javascript" src="{{ base_url() }}assets/global/assets/pages/data-table/js/pdfmake.min.js"></script>
+    <script type="text/javascript" src="{{ base_url() }}assets/global/assets/pages/data-table/js/vfs_fonts.js"></script>
+    <script type="text/javascript" src="{{ base_url() }}assets/global/assets/pages/data-table/extensions/buttons/js/dataTables.buttons.min.js"></script>
+    <script type="text/javascript" src="{{ base_url() }}assets/global/assets/pages/data-table/extensions/buttons/js/buttons.flash.min.js"></script>
+    <script type="text/javascript" src="{{ base_url() }}assets/global/assets/pages/data-table/extensions/buttons/js/jszip.min.js"></script>
+    <script type="text/javascript" src="{{ base_url() }}assets/global/assets/pages/data-table/extensions/buttons/js/vfs_fonts.js"></script>
+    <script type="text/javascript" src="{{ base_url() }}assets/global/assets/pages/data-table/extensions/buttons/js/buttons.colVis.min.js"></script>
+    <script type="text/javascript" src="{{ base_url() }}assets/global/bower_components/datatables.net-buttons/js/buttons.print.min.js"></script>
+    <script type="text/javascript" src="{{ base_url() }}assets/global/bower_components/datatables.net-buttons/js/buttons.html5.min.js"></script>
+    <script type="text/javascript" src="{{ base_url() }}assets/global/bower_components/datatables.net-bs4/js/dataTables.bootstrap4.min.js"></script>
+    <script type="text/javascript" src="{{ base_url() }}assets/global/bower_components/datatables.net-responsive/js/dataTables.responsive.min.js"></script>
+    <script type="text/javascript" src="{{ base_url() }}assets/global/bower_components/datatables.net-responsive-bs4/js/responsive.bootstrap4.min.js"></script>
     <script src="{{ base_url() }}assets/plugins/datatables/jquery.dataTables.delay.min.js" type="text/javascript"></script>
-    <script src="{{ base_url() }}assets/scripts/table-datatables-responsive.min.js" type="text/javascript"></script>
 
     <!-- i18next.min.js -->
     <script type="text/javascript" src="{{ base_url() }}assets/global/bower_components/i18next/js/i18next.min.js"></script>
@@ -405,19 +421,27 @@
     <script type="text/javascript" src="{{ base_url() }}assets/global/bower_components/i18next-browser-languagedetector/js/i18nextBrowserLanguageDetector.min.js"></script>
     <script type="text/javascript" src="{{ base_url() }}assets/global/bower_components/jquery-i18next/js/jquery-i18next.min.js"></script>
     <!-- Custom js -->
-    <script src="{{ base_url() }}assets/global/assets/js/pcoded.min.js"></script>
-    <script src="{{ base_url() }}assets/global/assets/js/vartical-layout.min.js"></script>
-    <script src="{{ base_url() }}assets/global/assets/js/jquery.mCustomScrollbar.concat.min.js"></script>
+    <script type="text/javascript" src="{{ base_url() }}assets/global/assets/js/pcoded.min.js"></script>
+    <script type="text/javascript" src="{{ base_url() }}assets/global/assets/js/vartical-layout.min.js"></script>
+    <script type="text/javascript" src="{{ base_url() }}assets/global/assets/js/jquery.mCustomScrollbar.concat.min.js"></script>
     <script type="text/javascript" src="{{ base_url() }}assets/global/assets/js/script.js"></script>
-
+    <script type="text/javascript" src="{{ base_url() }}assets/global/assets/pages/data-table/extensions/buttons/js/extension-btns-custom.js"></script>
+    
     <script type="text/javascript" src="{{ base_url() }}assets/global/bower_components/bootstrap-switch/js/bootstrap-switch.min.js"></script>
     <script type="text/javascript" src="{{ base_url() }}assets/global/bower_components/select2/js/select2.full.min.js"></script>
     <script type="text/javascript" src="{{ base_url() }}assets/global/bower_components/bootstrap-toastr/toastr.min.js"></script>
-    <script src="{{ base_url() }}assets/plugins/jquery-validation/js/jquery.validate.js" type="text/javascript"></script>
-    
+    <script type="text/javascript" src="{{ base_url() }}assets/plugins/jquery-validation/js/jquery.validate.js"></script>
+    <script type="text/javascript" src="{{ base_url() }}assets/plugins/currency/currency.js"></script>
+    <script type="text/javascript" src="{{ base_url() }}assets/plugins/jquery.blockui.min.js"></script>
+    <script type="text/javascript" src="{{ base_url() }}assets/plugins/confirm/js/jquery-confirm.js"></script>
+    <script type="text/javascript" src="{{ base_url() }}assets/plugins/jquery-mask/jquery.mask.js"></script>
+    <script type="text/javascript" src="{{ base_url() }}assets/plugins/input-mask/inputmask.js"></script>
+    <script type="text/javascript" src="{{ base_url() }}assets/plugins/input-mask/jquery.inputmask.js"  ></script>
+
     <script type="text/javascript">    
         $(function() {
             $("input[type='search']").focus();
+            $('.only_number').mask('000000000');
         });
     </script>
 

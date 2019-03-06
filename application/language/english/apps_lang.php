@@ -9,6 +9,7 @@ $lang['system_keywords'] = 'Developed by Octavian Panggestu';
 $lang['data_in_process'] = 'Please wait, data in process.';
 $lang['already_exist'] = 'The data already exists in the database';
 $lang['information'] = 'Information ';
+$lang['warning'] = 'Warning!';
 $lang['created_succesfully'] = 'Created Successfully';
 $lang['copied_succesfully'] = 'Copied Successfully';
 $lang['updated_succesfully'] = 'Updated Successfully';
